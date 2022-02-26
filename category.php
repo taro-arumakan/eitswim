@@ -1,4 +1,5 @@
 <?php
+
 /**
 Template Name:NEWS用
  *
@@ -24,25 +25,25 @@ $add_header_class = '';
 get_header();
 
 $parallax_image = '';
-$elc_title_image = get_post_meta($post->ID,'elc_title_image',true);
-if(!empty($elc_title_image)) {
+$elc_title_image = get_post_meta($post->ID, 'elc_title_image', true);
+if (!empty($elc_title_image)) {
   $parallax_image = "data-parallax-image=\"{$elc_title_image}\"";
 }
 
 $sub_title = get_post_meta($post->ID, 'elc_sub_title', true);
-$news_count = get_option( 'elc_news_page_news_count', 10 );
+$news_count = get_option('elc_news_page_news_count', 10);
 
 ?>
 <!-- Page title -->
 <section id="page-title" class="page-title-center p-t-80 p-b-80 dark" style="background:#fff; border:none;">
   <div class="container">
     <div class="page-title">
-      <?php echo elc_get_title( 'h1', '', 'font-size:24px; line-height:28px; letter-spacing:0.05em;');?>
+      <?php echo elc_get_title('h1', '', 'font-size:24px; line-height:28px; letter-spacing:0.05em;'); ?>
     </div>
   </div>
   <div class="breadcrumb">
     <ul>
-      <?php echo elc_breadcrumb();?>
+      <?php echo elc_breadcrumb(); ?>
     </ul>
   </div>
   </div>
@@ -60,32 +61,31 @@ $news_count = get_option( 'elc_news_page_news_count', 10 );
         <?php
         $args = array(
           'post_type' => 'post',
-//          'category' => $cat_id,
+          //          'category' => $cat_id,
           'posts_per_page' => $news_count,
-          'order'=>'DESC',
-          'orderby'=>'post_date',
+          'order' => 'DESC',
+          'orderby' => 'post_date',
         );
-        if(!empty($page)) {
+        if (!empty($page)) {
           $args['paged'] = $page;
-          global $paged;//現在のページ値
+          global $paged; //現在のページ値
           $paged = $page;
         }
         //$posts = get_posts($args);
-        $posts = new WP_Query( $args );
+        $posts = new WP_Query($args);
         /**
          * NEWマーク 投稿日から2週間以内はNEW表示
          */
-        foreach( $posts->posts as $post ):
-          setup_postdata( $post );
-          $d = get_post_time('F j, Y');
-          ?>
+        foreach ($posts->posts as $post) :
+          setup_postdata($post);
+        ?>
           <!-- Post item-->
           <div class="post-item">
             <div class="post-item-wrap">
               <div class="post-item-description">
-                <span class="post-meta-date"><i class="fa fa-calendar-o"></i><?php echo get_post_time('F j, Y');?></span>
+                <span class="post-meta-date"><i class="fa fa-calendar-o"></i><?php echo get_post_time('F j, Y'); ?></span>
                 <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-                <p><?php echo get_the_custom_excerpt(60);?></p>
+                <p><?php echo get_the_custom_excerpt(60); ?></p>
                 <a href="<?php the_permalink() ?>" class="item-link">Read More <i class="fa fa-chevron-circle-right" style="padding-top:3px;"></i></a>
               </div>
             </div>
