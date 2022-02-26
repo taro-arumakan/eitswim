@@ -32,14 +32,6 @@ if(!empty($elc_title_image)) {
 $sub_title = get_post_meta($post->ID, 'elc_sub_title', true);
 $news_count = get_option( 'elc_news_page_news_count', 10 );
 
-$primary_term = get_primary_term();
-if(!empty($primary_term)) {
-  $cat_id   = $primary_term->term_id;
-  $cat_name = $primary_term->name;
-  $cat_slug = $primary_term->slug;
-  $cat_link = get_category_link( $cat_id );
-}
-
 ?>
 <!-- Page title -->
 <section id="page-title" class="page-title-center p-t-80 p-b-80 dark" style="background:#fff; border:none;">
@@ -86,11 +78,6 @@ if(!empty($primary_term)) {
         foreach( $posts->posts as $post ):
           setup_postdata( $post );
           $d = get_post_time('F j, Y');
-
-          $image = catch_that_image(null,'thumbnail');
-          if(empty($image)) {
-            //$image = '/images/noimage.jpg';
-          }
           ?>
           <!-- Post item-->
           <div class="post-item">
