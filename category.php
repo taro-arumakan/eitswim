@@ -1,7 +1,7 @@
 <?php
 
 /**
-Template Name:NEWS用
+Template Name:CATEGORY用
  *
  * The template for displaying all pages.
  *
