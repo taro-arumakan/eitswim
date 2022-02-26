@@ -1,4 +1,5 @@
 <?php
+
 /**
 Template Name:NEWS用
  *
@@ -24,20 +25,20 @@ $add_header_class = '';
 get_header();
 
 $parallax_image = '';
-$elc_title_image = get_post_meta($post->ID,'elc_title_image',true);
-if(!empty($elc_title_image)) {
+$elc_title_image = get_post_meta($post->ID, 'elc_title_image', true);
+if (!empty($elc_title_image)) {
   $parallax_image = "data-parallax-image=\"{$elc_title_image}\"";
 }
 
 $sub_title = get_post_meta($post->ID, 'elc_sub_title', true);
-$news_count = get_option( 'elc_news_page_news_count', 10 );
+$news_count = get_option('elc_news_page_news_count', 10);
 
 $primary_term = get_primary_term();
-if(!empty($primary_term)) {
+if (!empty($primary_term)) {
   $cat_id   = $primary_term->term_id;
   $cat_name = $primary_term->name;
   $cat_slug = $primary_term->slug;
-  $cat_link = get_category_link( $cat_id );
+  $cat_link = get_category_link($cat_id);
 }
 
 ?>
@@ -69,37 +70,37 @@ if(!empty($primary_term)) {
         <?php
         $args = array(
           'post_type' => 'post',
-//          'category' => $cat_id,
+          //          'category' => $cat_id,
           'posts_per_page' => $news_count,
-          'order'=>'DESC',
-          'orderby'=>'post_date',
+          'order' => 'DESC',
+          'orderby' => 'post_date',
         );
-        if(!empty($page)) {
+        if (!empty($page)) {
           $args['paged'] = $page;
-          global $paged;//現在のページ値
+          global $paged; //現在のページ値
           $paged = $page;
         }
         //$posts = get_posts($args);
-        $posts = new WP_Query( $args );
+        $posts = new WP_Query($args);
         /**
          * NEWマーク 投稿日から2週間以内はNEW表示
          */
-        foreach( $posts->posts as $post ):
-          setup_postdata( $post );
+        foreach ($posts->posts as $post) :
+          setup_postdata($post);
           $d = get_post_time('F j, Y');
 
-          $image = catch_that_image(null,'thumbnail');
-          if(empty($image)) {
+          $image = catch_that_image(null, 'thumbnail');
+          if (empty($image)) {
             //$image = '/images/noimage.jpg';
           }
-          ?>
+        ?>
           <!-- Post item-->
           <div class="post-item">
             <div class="post-item-wrap">
               <div class="post-item-description">
-                <span class="post-meta-date"><i class="fa fa-calendar-o"></i><?php echo get_post_time('F j, Y');?></span>
+                <span class="post-meta-date"><i class="fa fa-calendar-o"></i><?php echo get_post_time('F j, Y'); ?></span>
                 <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-                <p><?php echo get_the_custom_excerpt(60);?></p>
+                <p><?php echo get_the_custom_excerpt(60); ?></p>
                 <a href="<?php the_permalink() ?>" class="item-link">Read More <i class="fa fa-chevron-circle-right" style="padding-top:3px;"></i></a>
               </div>
             </div>
