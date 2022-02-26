@@ -176,20 +176,9 @@ $title_encode=urlencode(get_the_title()).'｜'.get_bloginfo('name');
                 <?php foreach( $posts as $post ):
                   setup_postdata( $post );
                   ?>
-                  <?php $image = catch_that_image();?>
-                  <?php
-                  //if(empty($image)) $image = SDEL.'/images/noimage.png';
-                  ?>
                   <!-- Post item-->
                   <div class="post-item border">
                     <div class="post-item-wrap">
-                      <?php //if(!empty($image)):?>
-                      <?php if(false):?>
-                      <div class="post-image">
-                          <a href="<?php the_permalink() ?>">
-                            <img class="alpha-50" src="<?php echo $image ?>" alt="<?php the_title_attribute(); ?>"></a>
-                      </div>
-                      <?php endif;?>
                       <div class="post-item-description">
                         <span class="post-meta-date"><i class="fa fa-calendar-o"></i><?php the_time('Y.m.d');?></span>
                         <h2 class="serelatedtitle"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
