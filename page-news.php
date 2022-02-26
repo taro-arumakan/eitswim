@@ -33,13 +33,13 @@ if (!empty($elc_title_image)) {
 $sub_title = get_post_meta($post->ID, 'elc_sub_title', true);
 $news_count = get_option('elc_news_page_news_count', 10);
 
-$primary_term = get_primary_term();
-if (!empty($primary_term)) {
-  $cat_id   = $primary_term->term_id;
-  $cat_name = $primary_term->name;
-  $cat_slug = $primary_term->slug;
-  $cat_link = get_category_link($cat_id);
-}
+// $primary_term = get_primary_term();
+// if (!empty($primary_term)) {
+//   $cat_id   = $primary_term->term_id;
+//   $cat_name = $primary_term->name;
+//   $cat_slug = $primary_term->slug;
+//   $cat_link = get_category_link($cat_id);
+// }
 
 ?>
 <!-- Page title -->
@@ -54,7 +54,6 @@ if (!empty($primary_term)) {
       <li><a href="/">HOME</a></li>
       <li class="active">BLOG &amp; NEWS</li>
     </ul>
-  </div>
   </div>
 </section><!-- end: Page title -->
 
@@ -82,17 +81,21 @@ if (!empty($primary_term)) {
         }
         //$posts = get_posts($args);
         $posts = new WP_Query($args);
+
+        /** FIXME not working as expected as of 20220225? */
         /**
          * NEWマーク 投稿日から2週間以内はNEW表示
          */
         foreach ($posts->posts as $post) :
           setup_postdata($post);
-          $d = get_post_time('F j, Y');
+        //   $d = get_post_time('F j, Y');
 
-          $image = catch_that_image(null, 'thumbnail');
-          if (empty($image)) {
-            //$image = '/images/noimage.jpg';
-          }
+        //   $image = catch_that_image(null, 'thumbnail');
+        //   if (empty($image)) {
+        //     //$image = '/images/noimage.jpg';
+        //   }
+        /** END - FIXME not working as expected as of 20220225? */
+
         ?>
           <!-- Post item-->
           <div class="post-item">
