@@ -1,0 +1,300 @@
+/* Luxeritas WordPress Theme - free/libre wordpress platform
+ *
+ * @copyright Copyright (C) 2015 Thought is free.
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GPL v2 or later
+ * @author LunaNuko
+ * @link https://thk.kanzae.net/
+ * @translators rakeem( http://rakeem.jp/ )
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+*/
+
+.luxe-field {
+	border: 1px solid #ccc;
+	padding: 0.35em 0.625em 0.75em 1em;
+	margin: 1.35em 0 1.5em;
+}
+
+.luxe-field-title {
+	cursor: pointer;
+	position: relative;
+	margin: 0 5px;
+	padding-left: 1.2em;
+}
+
+.luxe-field-title::before {
+	content: '';
+	height: 0;
+	width: 0;
+	border: 0.4em solid transparent;
+	position: absolute;
+}
+.luxe-field-title::before {
+	border-top: 0.4em solid #555;
+	top: 35%;
+	left: 0;
+}
+#luxe-customize .label-title {
+	margin: 15px 0 5px 0;
+}
+#luxe-customize .control-title {
+	margin: 20px 0 10px 0;
+	font-size: 14px;
+	font-weight: bold;
+}
+#luxe-customize p.checkbox {
+	margin: 0 0 10px 0;
+	line-height: 1.6;
+}
+#luxe-customize p.radio {
+	margin: 0 0 8px 0;
+	line-height: 1.4;
+}
+#luxe-customize p.checkbox input,
+#luxe-customize p.radio input {
+	margin: 0 6px 3px 0;
+	vertical-align: middle;
+}
+#luxe-customize input[type="text"] {
+	max-width: 320px;
+	width: 100%;
+}
+#luxe-customize textarea {
+	max-width: 370px;
+	width: 100%;
+}
+#luxe-customize textarea#editor {
+	max-width: 1200px;
+}
+
+#luxe-customize input[type="number"] {
+	max-width: 80px;
+	width: 100%;
+}
+.wrap textarea.luxe-edit,
+.luxe-field textarea.htaccess {
+	font-family: Consolas, "Courier New", Courier, Monaco, monospace, "ＭＳ ゴシック", "MS Gothic", "Osaka−等幅";
+	margin: 10px 0;
+	width: 100%;
+	font-size: 12px;
+	background: #f9f9f9;
+}
+.luxe-field textarea.htaccess {
+	max-width: 760px;
+	width: 100%;
+}
+.wrap h2.luxe-customize-title {
+	margin-bottom: 15px;
+}
+.luxe-title-button-block {
+	margin-left: 5px;
+}
+.luxe-title-button {
+	margin: 0 2px;
+	padding: 9px 2px 4px 2px;
+}
+.luxe-backup p.submit {
+	margin: 0;
+	padding: 0;
+}
+
+.luxe-info {
+	max-width: 1450px;
+	margin: 30px 10px;
+}
+.luxe-info .screenshots {
+	float: left;
+	margin: 0 30px 0 0;
+	width: 55%;
+	max-width: 880px;
+	text-align: center;
+}
+.luxe-info .screenshot {
+	border: 1px solid #fff;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+	-webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+}
+.luxe-info .screenshot::after {
+	content: "";
+	display: block;
+	padding-top: 75%; /* using a 4/3 aspect ratio */
+}
+
+.luxe-info .screenshot img {
+	height: auto;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+.luxe-info .info {
+	width: 40%;
+	float: left;
+}
+.luxe-info .current-label {
+	background: #32373c;
+	color: #fff;
+	font-size: 11px;
+	display: inline-block;
+	padding: 2px 8px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	margin: 0 0 -10px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.luxe-info .name {
+	color: #23282d;
+	font-size: 32px;
+	font-weight: 100;
+	margin: 10px 0 0;
+	line-height: 1.3;
+}
+
+.luxe-info .version {
+	color: #72777c;
+	font-size: 13px;
+	font-weight: 400;
+	float: none;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.luxe-info .author {
+	margin: 15px 0 25px;
+	color: #72777c;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: inherit;
+}
+
+.luxe-info .author a {
+	text-decoration: none;
+}
+
+.luxe-info .description {
+	color: #555;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.5;
+	margin: 30px 0 0 0;
+}
+
+.luxe-info .tags {
+	border-top: 3px solid #ddd;
+	color: #82878c;
+	font-size: 13px;
+	font-weight: 400;
+	margin: 30px 0 0 0;
+	padding-top: 20px;
+}
+
+.luxe-info .tags span {
+	color: #444;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.luxe-info .parent-theme {
+	background: #f7fcfe;
+	border: 1px solid #eee;
+	border-left: 4px solid #00a0d2;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 30px 0;
+	padding: 10px 10px 10px 20px;
+}
+
+.luxe-info .parent-theme strong {
+	font-weight: 700;
+}
+
+@media only screen and (max-width: 780px) {
+	.wrap h2.luxe-customize-title {
+		display: block;
+	}
+	.luxe-info .info,
+	.luxe-info .screenshots {
+		float: none;
+		margin: 0 30px 0 0;
+		width: 100%;
+	}
+	.luxe-info .current-label {
+		margin-top: 20px;
+	}
+}
+
+/**
+------------------------------------
+ ogp
+------------------------------------ */
+#og-img-view img {
+	max-height: 200px;
+	height: auto;
+	width: auto;
+}
+
+/**
+------------------------------------
+ AMP Plugins
+------------------------------------ */
+#amp-plugins {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+#amp-plugins th, #amp-plugins td {
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	vertical-align: middle;
+}
+#amp-plugins th {
+	border-bottom: double 3px #ccc;
+	font-family: Verdana, Helvetica, Arial, Roboto;
+	font-weight: normal;
+}
+#amp-plugins .amp-cbox {
+	padding: 5px 0;
+	width: 75px;
+	text-align: center;
+}
+
+/**
+------------------------------------
+ clearfix
+------------------------------------ */
+.luxe-clearfix::before,
+.luxe-clearfix::after {
+	display: table;
+	content: " ";
+}
+
+.luxe-clearfix::after {
+	clear: both;
+}
+
+.bold {
+	font-weight: bold;
+}
+.m10 {
+	margin: 10px;
+}
+.m0-t {
+	margin-top: 0px;
+}
+.m25-b {
+	margin-bottom: 25px;
+}
+.f09em {
+	font-size: 0.9em;
+}

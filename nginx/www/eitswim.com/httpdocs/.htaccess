@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^news/?$ /news/press [R=301,L]
+

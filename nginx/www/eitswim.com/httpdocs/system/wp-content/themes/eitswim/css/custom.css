@@ -1,0 +1,143 @@
+
+body {
+  font-family: 'Lato', -apple-system, blinkMacSystemFont, 'Segoe UI', 'YuGothicM', 'YuGothic', 'Meiryo', sans-serif !important;
+}
+.yu-mincho{
+  font-family: "Yu Mincho", "YuMincho", serif;
+}
+
+.hushtag { color: #dca37e; }
+.hushtag:hover { color: #565656; }
+
+.background-blue {
+  background-color: #2686f3 !important; }
+
+.background-orange {
+  background-color: #ff7200 !important; }
+
+.background-red {
+  background-color: #f33b3b !important; }
+
+.text-small-light,
+.text-small-light span,
+.text-small-light span span {
+  font-size: 1.35714286em!important;
+  line-height: 1.68421053em !important;
+  font-weight: 100 !important;
+}
+
+.servicetitle {
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 22px;
+}
+
+#header #header-wrap #logo a > img { margin-right: 30px; }
+@media (max-width: 991px) {
+  #header #header-wrap #logo a > img { margin-right: 0px; }
+}
+
+a:hover img.alpha {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  -ms-filter: "alpha(opacity=70)";
+	transition: 0.5s ;
+}
+
+a:hover img.alpha-50 {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  -ms-filter: "alpha(opacity=50)";
+	transition: 0.8s ;
+}
+
+.single-post .post-item .post-item-description > h2.serelatedtitle,
+.single-post .post-item .post-item-description > h2.serelatedtitle > a {
+  font-size: 21px;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin-bottom: 0px;
+  margin-top: 8px;
+  font-weight: 200;
+}
+
+.btn.btn-light.btn-outline,
+.btn.btn-dark.btn-outline {
+  border-style: solid;
+  border-width: 1px;
+}
+
+.text-none { text-transform: none !important; }
+
+.t100 { font-weight: 100 !important; }
+
+.t200 { font-weight: 200 !important; }
+
+.t300 { font-weight: 300 !important; }
+
+.t400 { font-weight: 400 !important; }
+
+.t500 { font-weight: 500 !important; }
+
+.t600 { font-weight: 600 !important; }
+
+.t700 { font-weight: 700 !important; }
+
+.ls0 { letter-spacing: 0px !important; }
+
+.ls1 { letter-spacing: 1px !important; }
+
+.ls2 { letter-spacing: 2px !important; }
+
+.ls3 { letter-spacing: 3px !important; }
+
+.ls4 { letter-spacing: 4px !important; }
+
+.ls5 { letter-spacing: 5px !important; }
+
+.spcial-btn { text-transform: none !important; }
+
+ul.terms {
+	margin-left: 30px !important;
+	padding: 0 0 18px !important;
+}
+
+ol { list-style-type: decimal !important; }
+
+ol.privacy {
+  margin-left: 30px !important;
+  padding: 0 !important;
+}
+
+*:first-child+html ol.privacy{
+	margin-left: 32px !important;
+}
+
+ol.privacy li{
+	padding: 0 0 10px 0 !important;
+}
+
+ol.privacy li ol{
+	list-style: lower-alpha !important;;
+	margin: 0 0 0 2em !important;
+	padding: 10px 0 0 !important;
+	counter-reset: li !important;
+}
+
+ol.privacy li ol li:before{
+	display: none !important;
+}
+
+ol.privacy li ol li ol {
+	list-style: decimal !important;
+	margin: 0 0 0 2em !important;
+	padding: 10px 0 0 !important;
+	counter-reset: li !important;
+}
+
+ol.privacy li ol li ul {
+	list-style: circle !important;
+	margin: 0 0 0 2em !important;
+	padding: 10px 0 0 !important;
+	counter-reset: li !important;
+}

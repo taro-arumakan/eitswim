@@ -1,0 +1,4 @@
+User-agent: *
+
+Sitemap: https://eitswim.com/sitemap.xml
+Sitemap: https://eitswim.com/collection/sitemap.xml

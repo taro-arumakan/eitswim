@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>動画の挿入</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+        (function( $, window, document, _ ){
+
+            var topDomain;
+
+            function getDomain( i_data ) {
+
+                var url = i_data;
+                var arr_uri = url.match(/^(.*?:\/\/)(.*?)([a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})[\:[0-9]*]?([\/].*?)?$/i);
+
+                topDomain = arr_uri[1] + arr_uri[3];
+            }
+
+            // submit 処理（プラグイン側に URL を渡す）
+            $(document).on('click','#submit',function() {
+
+                //var url = _.escape($('#video_url').val());
+                var url = $('#video_url').val();
+
+                var linkTag = '<div class="post-video">' + "\n";
+                linkTag += url + "\n";
+                linkTag += '</div>' + "\n";
+
+                top.tinymce.activeEditor.selection.setContent(linkTag);
+                top.tinymce.activeEditor.windowManager.close();
+
+                return false;
+            });
+
+            // キャンセル処理
+            $(document).on('click','#cancel',function(){
+
+                $('#video_url').val('');
+                top.tinymce.activeEditor.windowManager.close();
+
+                return false;
+
+            });
+
+        })(jQuery, window, document, _);
+    </script>
+</head>
+<body>
+
+<div class="inner" style="padding: 30px;">
+    <!--
+    <input type="text" id="video_url" class="form-control" style="margin-bottom: 20px;" placeholder="（例 http://www.youtube.com/embed/xxxxxxxxxx">
+    -->
+    <textarea rows="3" type="text" id="video_url" class="form-control" style="margin-bottom: 20px;" placeholder='<iframe width="560" height="315" src="https://www.youtube.com/embed/動画ID" frameborder="0" allowfullscreen></iframe>'></textarea>
+
+    <p style="text-align: center;">
+        <input type="button" id="cancel" class="btn btn-danger" value="Cancel" onclick="return false;" style="margin-right: 10px;">
+        <input type="button" class="btn btn-primary" id="submit" value="OK" onclick="return false;" /></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<?php
+/**
+ * Luxeritas WordPress Theme - free/libre wordpress platform
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * @copyright Copyright (C) 2015 Thought is free.
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GPL v2 or later
+ * @author LunaNuko
+ * @link https://thk.kanzae.net/
+ * @translators rakeem( http://rakeem.jp/ )
+ */
+
+?>
+<ul>
+<li>
+<p class="control-title">言語設定</p>
+<p class="label-title">lang</p>
+<input type="text" value="<?php thk_value_check( 'html_lang', 'text' ); ?>" name="html_lang" />
+<p class="label-title">hreflang</p>
+<input type="text" value="<?php thk_value_check( 'html_hreflang', 'text' ); ?>" name="html_hreflang" />
+</li>
+<li>
+<p class="control-title"><?php echo __( 'To add tags', 'luxeritas' ); ?></p>
+<p class="checkbox">
+<input type="checkbox" value="" name="canonical_enable"<?php thk_value_check( 'canonical_enable', 'checkbox' ); ?> />
+<?php printf( __( 'Add %s', 'luxeritas' ), 'canonical' . ' ' ); ?>
+</p>
+</li>
+<li>
+<p class="checkbox">
+<input type="checkbox" value="" name="next_prev_enable"<?php thk_value_check( 'next_prev_enable', 'checkbox' ); ?> />
+<?php printf( __( 'Add %s', 'luxeritas' ), 'next / prev' . ' ' ); ?>
+</p>
+</li>
+<li>
+<p class="checkbox">
+<input type="checkbox" value="" name="rss_feed_enable"<?php thk_value_check( 'rss_feed_enable', 'checkbox' ); ?> />
+<?php printf( __( 'Add %s', 'luxeritas' ), 'RSS Feed' . ' ' ); ?>
+</p>
+</li>
+<li>
+<p class="checkbox">
+<input type="checkbox" value="" name="atom_feed_enable"<?php thk_value_check( 'atom_feed_enable', 'checkbox' ); ?> />
+<?php printf( __( 'Add %s', 'luxeritas' ), 'Atom Feed' . ' ' ); ?>
+</p>
+</li>
+<li>
+<p class="checkbox">
+<input type="checkbox" value="" name="dns_prefetch_enable"<?php thk_value_check( 'dns_prefetch_enable', 'checkbox' ); ?> />
+<?php //printf( __( 'Add %s', 'luxeritas' ), 'dns_prefetch' . ' ' ); ?>
+<?php printf( __( '%s を追加', 'luxeritas' ), 'dns-prefetch' . ' ' ); ?>
+</p>
+</li>
+<script>
+$('input[name=dns_prefetch_enable]').on('change', function(){
+    if(this.checked) {
+        $('textarea[name=dns_prefetch_text]').show();
+    } else {
+        $('textarea[name=dns_prefetch_text]').hide();
+    }
+});
+</script>
+<li>
+<p><textarea name="dns_prefetch_text" cols="60" rows="5"
+ placeholder="//www.facebook.com"><?php thk_value_check( 'dns_prefetch_text', 'textarea' ); ?></textarea></p>
+</li>
+<li>
+<p class="control-title"><?php echo __( 'The front page meta description', 'luxeritas' ); ?></p>
+<input type="text" value="<?php thk_value_check( 'top_description', 'text' ); ?>" name="top_description" />
+<p class="f09em"><?php echo __( '* You can change meta description of each post by writing it in &quot;Excerpt&quot; on New Post / Edit Post page.', 'luxeritas' ); ?></p>
+<p class="f09em m25-b"><?php echo __( '* You can change meta description of category and tag page by writing it in &quot;Description&quot; on Edit Categories or Tags page.', 'luxeritas' ); ?></p>
+</li>
+  <li>
+    <p class="control-title"><?php echo __( 'Posts page, static page meta description', 'luxeritas' ); ?></p>
+    <p class="checkbox">
+      <input type="checkbox" value="" name="description_enable"<?php thk_value_check( 'description_enable', 'checkbox' ); ?> />
+      <?php echo __( 'Fill it yourself', 'luxeritas' ); ?>
+    </p>
+  </li>
+  <li>
+<p class="control-title"><?php printf( __( 'Setting of %s', 'luxeritas' ), __( 'Structured data ', 'luxeritas' ) ); ?></p>
+<p><?php echo __( 'Types of site names recognized by the search engine', 'luxeritas' ); ?></p>
+<p class="radio">
+<input type="radio" value="WebSite" name="site_name_type"<?php thk_value_check( 'site_name_type', 'radio', 'WebSite' ); ?> />
+<?php echo __( 'Web site name', 'luxeritas' ); ?>
+</p>
+<p class="radio">
+<input type="radio" value="Organization" name="site_name_type"<?php thk_value_check( 'site_name_type', 'radio', 'Organization' ); ?> />
+<?php echo __( 'Organization name', 'luxeritas' ); ?>:&nbsp;
+
+<select name="organization_type">
+<option value="Organization"<?php thk_value_check( 'organization_type', 'select', 'Organization' ); ?>><?php echo __( 'Organization', 'luxeritas' ); ?></option>
+<?php
+	// Organization sub type
+	$orgs = array(
+		'Airline'			=> __( 'Airline', 'luxeritas' ).'（Airline）',
+		'Corporation'			=> __( 'Corporation', 'luxeritas' ).'（Corporation）',
+		'EducationalOrganization'	=> __( 'EducationalOrganization', 'luxeritas' ).'（EducationalOrganization）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp;- <?php echo $val; ?></option>
+<?php
+	}
+	// EducationalOrganization sub type
+	$orgs = array(
+		'CollegeOrUniversity'	=> __( 'CollegeOrUniversity', 'luxeritas' ).'（CollegeOrUniversity）',
+		'ElementarySchool'	=> __( 'ElementarySchool', 'luxeritas' ).'（ElementarySchool）',
+		'HighSchool'		=> __( 'HighSchool', 'luxeritas' ).'（HighSchool）',
+		'MiddleSchool'		=> __( 'MiddleSchool', 'luxeritas' ).'（MiddleSchool）',
+		'Preschool'		=> __( 'Preschool', 'luxeritas' ).'（Preschool）',
+		'School'		=> __( 'School', 'luxeritas' ).'（School）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// Organization sub type
+	$orgs = array(
+		'GovernmentOrganization'	=> __( 'GovernmentOrganization', 'luxeritas' ).'（GovernmentOrganization）',
+		'LocalBusiness'			=> __( 'LocalBusiness', 'luxeritas' ).'（LocalBusiness）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp;- <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'AnimalShelter'		=> __( 'AnimalShelter', 'luxeritas' ).'（AnimalShelter）',
+		'AutomotiveBusiness'	=> __( 'AutomotiveBusiness', 'luxeritas' ).'（AutomotiveBusiness）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// AutomotiveBusiness sub type
+	$orgs = array(
+		'AutoBodyShop'		=> __( 'AutoBodyShop', 'luxeritas' ).'（AutoBodyShop）',
+		'AutoDealer'		=> __( 'AutoDealer', 'luxeritas' ).'（AutoDealer）',
+		'AutoPartsStore'	=> __( 'AutoPartsStore', 'luxeritas' ).'（AutoPartsStore）',
+		'AutoRental'		=> __( 'AutoRental', 'luxeritas' ).'（AutoRental）',
+		'AutoRepair'		=> __( 'AutoRepair', 'luxeritas' ).'（AutoRepair）',
+		'AutoWash'		=> __( 'AutoWash', 'luxeritas' ).'（AutoWash）',
+		'GasStation'		=> __( 'GasStation', 'luxeritas' ).'（GasStation）',
+		'MotorcycleDealer'	=> __( 'MotorcycleDealer', 'luxeritas').'（MotorcycleDealer）',
+		'MotorcycleRepair'	=> __( 'MotorcycleRepair', 'luxeritas').'（MotorcycleRepair）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'ChildCare'		=> __( 'ChildCare', 'luxeritas' ).'（ChildCare）',
+		'DryCleaningOrLaundry'	=> __( 'DryCleaningOrLaundry', 'luxeritas' ).'（DryCleaningOrLaundry）',
+		'EmergencyService'	=> __( 'EmergencyService', 'luxeritas' ).'（EmergencyService）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// EmergencyService sub type
+	$orgs = array(
+		'FireStation'		=> __( 'FireStation', 'luxeritas' ).'（FireStation）',
+		'PoliceStation'		=> __( 'PoliceStation', 'luxeritas' ).'（PoliceStation）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'EmploymentAgency'	=> __( 'EmploymentAgency', 'luxeritas' ).'（EmploymentAgency）',
+		'EntertainmentBusiness'	=> __( 'EntertainmentBusiness', 'luxeritas' ).'（EntertainmentBusiness）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// EntertainmentBusiness sub type
+	$orgs = array(
+		'AdultEntertainment'	=> __( 'AdultEntertainment', 'luxeritas' ).'（AdultEntertainment）',
+		'AmusementPark'		=> __( 'AmusementPark', 'luxeritas' ).'（AmusementPark）',
+		'ArtGallery'		=> __( 'ArtGallery', 'luxeritas' ).'（ArtGallery）',
+		'Casino'		=> __( 'Casino', 'luxeritas' ).'（Casino）',
+		'ComedyClub'		=> __( 'ComedyClub', 'luxeritas' ).'（ComedyClub）',
+		'MovieTheater'		=> __( 'MovieTheater', 'luxeritas' ).'（MovieTheater）',
+		'NightClub'		=> __( 'NightClub', 'luxeritas' ).'（NightClub）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'FinancialService'	=> __( 'FinancialService', 'luxeritas' ).'（FinancialService）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// FinancialService sub type
+	$orgs = array(
+		'AccountingService'	=> __( 'AccountingService', 'luxeritas' ).'（AccountingService）',
+		'AutomatedTeller'	=> __( 'AutomatedTeller', 'luxeritas' ).'（AutomatedTeller）',
+		'BankOrCreditUnion'	=> __( 'BankOrCreditUnion', 'luxeritas' ).'（BankOrCreditUnion）',
+		'InsuranceAgency'	=> __( 'InsuranceAgency', 'luxeritas' ).'（InsuranceAgency）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'FoodEstablishment'	=> __( 'FoodEstablishment', 'luxeritas' ).'（FoodEstablishment）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// FoodEstablishment sub type
+	$orgs = array(
+		'Bakery'		=> __( 'Bakery', 'luxeritas' ).'（Bakery）',
+		'BarOrPub'		=> __( 'BarOrPub', 'luxeritas' ).'（BarOrPub）',
+		'Brewery'		=> __( 'Brewery', 'luxeritas' ).'（Brewery）',
+		'CafeOrCoffeeShop'	=> __( 'CafeOrCoffeeShop', 'luxeritas' ).'（CafeOrCoffeeShop）',
+		'FastFoodRestaurant'	=> __( 'FastFoodRestaurant', 'luxeritas' ).'（FastFoodRestaurant）',
+		'IceCreamShop'		=> __( 'IceCreamShop', 'luxeritas' ).'（IceCreamShop）',
+		'Restaurant'		=> __( 'Restaurant', 'luxeritas' ).'（Restaurant）',
+		'Winery'		=> __( 'Winery', 'luxeritas' ).'（Winery）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'GovernmentOffice'	=> __( 'GovernmentOffice', 'luxeritas' ).'（GovernmentOffice）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// GovernmentOffice sub type
+	$orgs = array(
+		'PostOffice'		=> __( 'PostOffice', 'luxeritas' ).'（PostOffice）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'HealthAndBeautyBusiness'	=> __( 'HealthAndBeautyBusiness', 'luxeritas' ).'（HealthAndBeautyBusiness）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// HealthAndBeautyBusiness sub type
+	$orgs = array(
+		'BeautySalon'	=> __( 'BeautySalon', 'luxeritas' ).'（BeautySalon）',
+		'DaySpa'	=> __( 'DaySpa', 'luxeritas' ).'（DaySpa）',
+		'HairSalon'	=> __( 'HairSalon', 'luxeritas' ).'（HairSalon）',
+		'HealthClub'	=> __( 'HealthClub', 'luxeritas' ).'（HealthClub）',
+		'NailSalon'	=> __( 'NailSalon', 'luxeritas' ).'（NailSalon）',
+		'TattooParlor'	=> __( 'TattooParlor', 'luxeritas' ).'（TattooParlor）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'HomeAndConstructionBusiness'	=> __( 'HomeAndConstructionBusiness', 'luxeritas' ).'（HomeAndConstructionBusiness）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// HomeAndConstructionBusiness sub type
+	$orgs = array(
+		'Electrician'		=> __( 'Electrician', 'luxeritas' ).'（Electrician）',
+		'GeneralContractor'	=> __( 'GeneralContractor', 'luxeritas' ).'（GeneralContractor）',
+		'HVACBusiness'		=> __( 'HVACBusiness', 'luxeritas' ).'（HVACBusiness）',
+		'HousePainter'		=> __( 'HousePainter', 'luxeritas' ).'（HousePainter）',
+		'Locksmith'		=> __( 'Locksmith', 'luxeritas' ).'（Locksmith）',
+		'MovingCompany'		=> __( 'MovingCompany', 'luxeritas' ).'（MovingCompany）',
+		'Plumber'		=> __( 'Plumber', 'luxeritas' ).'（Plumber）',
+		'RoofingContractor'	=> __( 'RoofingContractor', 'luxeritas' ).'（RoofingContractor）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'InternetCafe'	=> __( 'InternetCafe', 'luxeritas' ).'（InternetCafe）',
+		'LegalService'	=> __( 'LegalService', 'luxeritas' ).'（LegalService）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LegalService sub type
+	$orgs = array(
+		'Attorney'	=> __( 'Attorney', 'luxeritas' ).'（Attorney）',
+		'Notary'	=> __( 'Notary', 'luxeritas' ).'（Notary）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'Library'		=> __( 'Library', 'luxeritas' ).'（Library）',
+		'LodgingBusiness'	=> __( 'LodgingBusiness', 'luxeritas' ).'（LodgingBusiness）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LodgingBusiness sub type
+	$orgs = array(
+		'BedAndBreakfast'	=> __( 'BedAndBreakfast', 'luxeritas' ).'（BedAndBreakfast）',
+		'Campground'		=> __( 'Campground', 'luxeritas' ).'（Campground）',
+		'Hostel'		=> __( 'Hostel', 'luxeritas' ).'（Hostel）',
+		'Hotel'			=> __( 'Hotel', 'luxeritas' ).'（Hotel）',
+		'Motel'			=> __( 'Motel', 'luxeritas' ).'（Motel）',
+		'Resort'		=> __( 'Resort', 'luxeritas' ).'（Resort）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'ProfessionalService'	=> __( 'ProfessionalService', 'luxeritas' ).'（ProfessionalService）',
+		'RadioStation'		=> __( 'RadioStation', 'luxeritas' ).'（RadioStation）',
+		'RealEstateAgent'	=> __( 'RealEstateAgent', 'luxeritas' ).'（RealEstateAgent）',
+		'RecyclingCenter'	=> __( 'RecyclingCenter', 'luxeritas' ).'（RecyclingCenter）',
+		'SelfStorage'		=> __( 'SelfStorage', 'luxeritas' ).'（SelfStorage）',
+		'ShoppingCenter'	=> __( 'ShoppingCenter', 'luxeritas' ).'（ShoppingCenter）',
+		'SportsActivityLocation'=> __( 'SportsActivityLocation', 'luxeritas' ).'（SportsActivityLocation）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// SportsActivityLocation sub type
+	$orgs = array(
+		'BowlingAlley'		=> __( 'BowlingAlley', 'luxeritas' ).'（BowlingAlley）',
+		'ExerciseGym'		=> __( 'ExerciseGym', 'luxeritas' ).'（ExerciseGym）',
+		'GolfCourse'		=> __( 'GolfCourse', 'luxeritas' ).'（GolfCourse）',
+		'HealthClub'		=> __( 'HealthClub', 'luxeritas' ).'（HealthClub）',
+		'PublicSwimmingPool'	=> __( 'PublicSwimmingPool', 'luxeritas' ).'（PublicSwimmingPool）',
+		'SkiResort'		=> __( 'SkiResort', 'luxeritas' ).'（SkiResort）',
+		'SportsClub'		=> __( 'SportsClub', 'luxeritas' ).'（SportsClub）',
+		'StadiumOrArena'	=> __( 'StadiumOrArena', 'luxeritas' ).'（StadiumOrArena）',
+		'TennisComplex'		=> __( 'TennisComplex', 'luxeritas' ).'（TennisComplex）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'Store'	=> __( 'Store', 'luxeritas' ).'（Store）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// Store sub type
+	$orgs = array(
+		'BikeStore'		=> __( 'BikeStore', 'luxeritas' ).'（BikeStore）',
+		'BookStore'		=> __( 'BookStore', 'luxeritas' ).'（BookStore）',
+		'ClothingStore'		=> __( 'ClothingStore', 'luxeritas' ).'（ClothingStore）',
+		'ComputerStore'		=> __( 'ComputerStore', 'luxeritas' ).'（ComputerStore）',
+		'ConvenienceStore'	=> __( 'ConvenienceStore', 'luxeritas' ).'（ConvenienceStore）',
+		'DepartmentStore'	=> __( 'DepartmentStore', 'luxeritas' ).'（DepartmentStore）',
+		'ElectronicsStore'	=> __( 'ElectronicsStore', 'luxeritas' ).'（ElectronicsStore）',
+		'Florist'		=> __( 'Florist', 'luxeritas' ).'（Florist）',
+		'FurnitureStore'	=> __( 'FurnitureStore', 'luxeritas' ).'（FurnitureStore）',
+		'GardenStore'		=> __( 'GardenStore', 'luxeritas' ).'（GardenStore）',
+		'GroceryStore'		=> __( 'GroceryStore', 'luxeritas' ).'（GroceryStore）',
+		'HardwareStore'		=> __( 'HardwareStore', 'luxeritas' ).'（HardwareStore）',
+		'HobbyShop'		=> __( 'HobbyShop', 'luxeritas' ).'（HobbyShop）',
+		'HomeGoodsStore'	=> __( 'HomeGoodsStore', 'luxeritas' ).'（HomeGoodsStore）',
+		'JewelryStore'		=> __( 'JewelryStore', 'luxeritas' ).'（JewelryStore）',
+		'LiquorStore'		=> __( 'LiquorStore', 'luxeritas' ).'（LiquorStore）',
+		'MensClothingStore'	=> __( 'MensClothingStore', 'luxeritas' ).'（MensClothingStore）',
+		'MobilePhoneStore'	=> __( 'MobilePhoneStore', 'luxeritas' ).'（MobilePhoneStore）',
+		'MovieRentalStore'	=> __( 'MovieRentalStore', 'luxeritas' ).'（MovieRentalStore）',
+		'MusicStore'		=> __( 'MusicStore', 'luxeritas' ).'（MusicStore）',
+		'OfficeEquipmentStore'	=> __( 'OfficeEquipmentStore', 'luxeritas' ).'（OfficeEquipmentStore）',
+		'OutletStore'		=> __( 'OutletStore', 'luxeritas' ).'（OutletStore）',
+		'PawnShop'		=> __( 'PawnShop', 'luxeritas' ).'（PawnShop）',
+		'PetStore'		=> __( 'PetStore', 'luxeritas' ).'（PetStore）',
+		'ShoeStore'		=> __( 'ShoeStore', 'luxeritas' ).'（ShoeStore）',
+		'SportingGoodsStore'	=> __( 'SportingGoodsStore', 'luxeritas' ).'（SportingGoodsStore）',
+		'TireShop'		=> __( 'TireShop', 'luxeritas' ).'（TireShop）',
+		'ToyStore'		=> __( 'ToyStore', 'luxeritas' ).'（ToyStore）',
+		'WholesaleStore'	=> __( 'WholesaleStore', 'luxeritas' ).'（WholesaleStore）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp; &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// LocalBusiness sub type
+	$orgs = array(
+		'TelevisionStation'		=> __( 'TelevisionStation', 'luxeritas' ).'（TelevisionStation）',
+		'TouristInformationCenter'	=> __( 'TouristInformationCenter', 'luxeritas' ).'（TouristInformationCenter）',
+		'TravelAgency'			=> __( 'TravelAgency', 'luxeritas' ).'（TravelAgency）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// Organization sub type
+	$orgs = array(
+		'MedicalOrganization'	=> __( 'MedicalOrganization', 'luxeritas' ).'（MedicalOrganization）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp;- <?php echo $val; ?></option>
+<?php
+	}
+	// MedicalOrganization sub type
+	$orgs = array(
+		'Dentist'	=> __( 'Dentist', 'luxeritas' ).'（Dentist）',
+		'Hospital'	=> __( 'Hospital', 'luxeritas' ).'（Hospital）',
+		'Pharmacy'	=> __( 'Pharmacy', 'luxeritas' ).'（Pharmacy）',
+		'Physician'	=> __( 'Physician', 'luxeritas' ).'（Physician）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// Organization sub type
+	$orgs = array(
+		'NGO'			=> __( 'NGO', 'luxeritas' ),
+		'PerformingGroup'	=> __( 'PerformingGroup', 'luxeritas' ).'（PerformingGroup）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp;- <?php echo $val; ?></option>
+<?php
+	}
+	// PerformingGroup sub type
+	$orgs = array(
+		'DanceGroup'	=> __( 'DanceGroup', 'luxeritas' ).'（DanceGroup）',
+		'MusicGroup'	=> __( 'MusicGroup', 'luxeritas' ).'（MusicGroup）',
+		'TheaterGroup'	=> __( 'TheaterGroup', 'luxeritas' ).'（TheaterGroup）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+	// Organization sub type
+	$orgs = array(
+		'SportsOrganization'	=> __( 'SportsOrganization', 'luxeritas' ).'（SportsOrganization）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp;- <?php echo $val; ?></option>
+<?php
+	}
+	// SportsOrganization sub type
+	$orgs = array(
+		'SportsTeam'	=> __( 'SportsTeam', 'luxeritas' ).'（SportsTeam）',
+	);
+	foreach( $orgs as $key => $val ) {
+?>
+<option value="<?php echo $key; ?>"<?php thk_value_check( 'organization_type', 'select', $key ); ?>> &nbsp; &nbsp;&middot; <?php echo $val; ?></option>
+<?php
+	}
+?>
+</select>
+</p>
+</li>
+
+<li>
+<p><?php echo __( 'Organization logo', 'luxeritas' ), ' ( ' . __( 'Only when &quoValid only when &quot;Organization name&quot; is selected as the type of site name', 'luxeritas' ), ' ) '; ?></p>
+<p class="radio">
+<input type="radio" value="onepoint" name="organization_logo"<?php thk_value_check( 'organization_logo', 'radio', 'onepoint' ); ?> />
+<?php echo __( 'Make the search engine recognize a one-point logo image as &quot;Organization logo&quot;', 'luxeritas' ); ?>
+</p>
+<p class="radio">
+<input type="radio" value="titleimg" name="organization_logo"<?php thk_value_check( 'organization_logo', 'radio', 'titleimg' ); ?> />
+<?php echo __( 'Make the search engine recognize the site title image as &quot;Organization logo&quot;', 'luxeritas' ); ?>
+</p>
+<p class="radio">
+<input type="radio" value="none" name="organization_logo"<?php thk_value_check( 'organization_logo', 'radio', 'none' ); ?> />
+<?php echo __( 'There is no organization logo. Or don&apos;t need such a setting', 'luxeritas' ); ?>
+</p>
+</li>
+
+  <li>
+    <p class="control-title"><?php echo __( 'The front page meta keywords', 'luxeritas' ); ?></p>
+    <input type="text" value="<?php thk_value_check( 'top_keywords', 'text' ); ?>" name="top_keywords" />
+  </li>
+
+<li>
+<p class="control-title"><?php printf( __( 'Setting of %s', 'luxeritas' ), 'meta keywords ' ); ?></p>
+  <p class="radio">
+    <input type="radio" value="input" name="meta_keywords"<?php thk_value_check( 'meta_keywords', 'radio', 'input' ); ?> />
+    <?php echo __( 'Fill in posts page and static page keywords yourself', 'luxeritas' ); ?>
+  </p>
+<p class="radio">
+<input type="radio" value="tags" name="meta_keywords"<?php thk_value_check( 'meta_keywords', 'radio', 'tags' ); ?> />
+<?php echo __( 'Put tags and category names into meta keywords', 'luxeritas' ); ?>
+</p>
+<p class="radio">
+<input type="radio" value="none" name="meta_keywords"<?php thk_value_check( 'meta_keywords', 'radio', 'none' ); ?> />
+<?php echo __( 'Do not need any meta keywords!', 'luxeritas' ); ?>
+</p>
+</li>
+<li>
+<p class="control-title"><?php echo __( 'Date to display in Google search results', 'luxeritas' ); ?></p>
+<select name="published">
+<option value="published"<?php thk_value_check( 'published', 'select', 'published' ); ?>><?php echo __( 'publish date', 'luxeritas' ); ?></option>
+<option value="updated"<?php thk_value_check( 'published', 'select', 'updated' ); ?>><?php echo __( 'updated date', 'luxeritas' ); ?></option>
+</select>
+<p class="f09em"><?php echo __( '* It is a setting of the date to display in Google search results when there is both a publish date and an update date.', 'luxeritas' ); ?></p>
+</li>
+<li>
+<p class="control-title"><?php echo __( 'Splitting Content for blog posts and pages', 'luxeritas' ); ?></p>
+<p class="checkbox">
+<input type="checkbox" value="" name="nextpage_index"<?php thk_value_check( 'nextpage_index', 'checkbox' ); ?> />
+<?php echo __( 'Prohibit crawlers to index second page onward when contents are split using &lt;!--nextpage--&gt; tag.', 'luxeritas' ); ?>
+</p>
+</li>
+</ul>
