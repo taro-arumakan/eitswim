@@ -18,6 +18,7 @@ class MW_WP_Form_ReCaptchaV3_Validation extends MW_WP_Form_Abstract_Validation_R
      */
     public function rule($name, array $options = array())
     {
+echo "<script>console.log('request method: " . $_SERVER['REQUEST_METHOD'] . "' );</script>";
 		if( strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST' ) return '';
 
         /**
@@ -31,6 +32,7 @@ class MW_WP_Form_ReCaptchaV3_Validation extends MW_WP_Form_Abstract_Validation_R
          */
         $is_reCAPTCHA = isset($options['is_reCAPTCHA']) ? $options['is_reCAPTCHA'] : '';
 
+echo "<script>console.log('is_reCAPTCHA: " . $is_reCAPTCHA . "' );</script>";
         $plugin_option = get_option(Config::OPTION);
         $secret_key = isset($plugin_option['secret_key']) ? esc_html($plugin_option['secret_key']) : '';
 		$threshold_score = isset($plugin_option['threshold_score']) ? (float) $plugin_option['threshold_score'] : 0;
@@ -48,8 +50,11 @@ class MW_WP_Form_ReCaptchaV3_Validation extends MW_WP_Form_Abstract_Validation_R
             }
 
             if ($name == 'recaptcha-v3' && !isset($_POST['submitBack'])) {
+echo "<script>console.log('recaptcha request with secret to url' );</script>";
                 $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $value;
+echo "<script>console.log('URL: " . $url . "' );</script>";
                 $response = wp_remote_get($url);
+echo "<script>console.log('response: " . $response . "' );</script>";
                 if (!is_wp_error($response) && $response["response"]["code"] === 200) {
                     $reCAPTCHA = json_decode($response["body"]);
 

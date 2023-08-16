@@ -150,3 +150,6 @@ add_action( 'admin_print_styles', function() {
 	wp_register_style( 'thk-img-selector-style', get_template_directory_uri() . '/css/thk-img-selector.css', false, false );
         wp_enqueue_style( 'thk-img-selector-style' );
 } );
+
+
+

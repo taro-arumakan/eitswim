@@ -50,6 +50,7 @@ $is_404 = is_404();
   <a id="goToTop"><i class="fa fa-angle-up top-icon"></i><i class="fa fa-angle-up"></i></a>
   <!--Plugins-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> -->
   <script src="<?php echo SDEL; ?>/js/plugins.js<?php file_ver(SDEL.'/js/plugins.js') ?>"></script>
 
   <!-- functions JS -->

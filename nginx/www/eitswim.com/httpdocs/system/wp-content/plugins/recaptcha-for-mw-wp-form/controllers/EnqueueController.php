@@ -9,17 +9,20 @@ class EnqueueController
 
     public function __construct()
     {
-        add_action('wp_enqueue_scripts', array($this, 'add_scripts'));
+echo "<script>console.log('__construct' );</script>";
+        add_action('wp_enqueue_scripts', array($this, 'add_scripts'), 150);
     }
 
     public function add_scripts()
     {
+echo "<script>console.log('add_scripts' );</script>";
         global $post;
         $option = get_option(Config::OPTION);
         $site_key = esc_html($option['site_key']);
         if (!empty($post) && has_shortcode($post->post_content, 'mwform_formkey') && !empty($site_key)) {
-            wp_enqueue_script('jquery');
-            wp_enqueue_script("recaptcha-script", 'https://www.google.com/recaptcha/api.js?render=' . $site_key, array('jquery'), array(), true);
+echo "<script>console.log('wp_enqueue' );</script>";
+            //wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js');
+            wp_enqueue_script("recaptcha-script", 'https://www.google.com/recaptcha/api.js?render=' . $site_key, array(), array(), true);
 
             $data = <<< EOL
 grecaptcha.ready(function() {
@@ -31,7 +34,7 @@ grecaptcha.ready(function() {
         });
     });
 EOL;
-            wp_add_inline_script('recaptcha-script', $data);
+            wp_add_inline_script('mw-wp-form-recaptcha-script', $data);
         }
     }
 }

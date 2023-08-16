@@ -189,6 +189,7 @@ if( function_exists( 'thk_gtag_js' ) === false && is_admin() === false ):
 function thk_gtag_js() {
   global $html_gtag;
   if(!empty($html_gtag)) {
+    echo "<script>console.log('thk_gtag_js');</script>";
     echo html_entity_decode($html_gtag, ENT_QUOTES, 'UTF-8');
   }
 }
@@ -452,7 +453,7 @@ add_filter( 'script_loader_tag', function( $ret ) {
 		is_customize_preview() === true
 	) return $ret;
 
-  return '';
+  // return '';
 
   $ret = str_replace( "'", '"', $ret );
 

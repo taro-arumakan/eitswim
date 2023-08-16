@@ -1,4 +1,5 @@
 <?php
+echo "<script>console.log('eitswim header.php');</script>";
 /**
  * The header for our theme
  *
@@ -25,6 +26,9 @@ $template = get_post_meta(get_the_ID() , '_wp_page_template', true);
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="author" content="Agentblue Inc.">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="<?php echo SDEL; ?>/images/favicon.ico">
 <link rel="icon" type="image/png" href="<?php echo SDEL; ?>/images/favicon.png">
@@ -35,7 +39,8 @@ $template = get_post_meta(get_the_ID() , '_wp_page_template', true);
 <link href="<?php echo SDEL; ?>/css/custom.css<?php file_ver(SDEL.'/css/custom.css') ?>" rel="stylesheet">
 <link href="<?php echo SDEL; ?>/css/style.css<?php file_ver(SDEL.'/css/style.css') ?>" rel="stylesheet">
 <link href="<?php echo SDEL; ?>/css/responsive.css<?php file_ver(SDEL.'/css/responsive.css') ?>" rel="stylesheet">
-<?php echo apply_filters( 'thk_head', '' );	// load header; ?>
+<!--  <?php echo apply_filters( 'thk_head', '' );	// load header; ?> 
+<?php wp_head(); ?>
 </head>
 <?php if( is_404() ): ?>
 <body>

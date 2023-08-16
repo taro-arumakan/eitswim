@@ -1,4 +1,5 @@
 <?php
+echo "<script>console.log('supreme functions.php');</script>";
 /**
  * studioelc functions and definitions
  *

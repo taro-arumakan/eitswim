@@ -1,4 +1,5 @@
 <?php
+echo "<script>console.log('supreme header.php');</script>";
 /**
  * The header for our theme
  *
