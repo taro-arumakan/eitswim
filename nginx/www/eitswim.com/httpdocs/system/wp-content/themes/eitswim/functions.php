@@ -1,5 +1,4 @@
 <?php
-echo "<script>console.log('eitswim functions.php');</script>";
 //Image Resize Plugin
 locate_template('lib/aq_resizer.php', true);
 
