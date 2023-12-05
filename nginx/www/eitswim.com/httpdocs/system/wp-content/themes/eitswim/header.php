@@ -41,9 +41,8 @@ $template = get_post_meta(get_the_ID(), '_wp_page_template', true);
   <link href="<?php echo SDEL; ?>/css/custom.css<?php file_ver(SDEL . '/css/custom.css') ?>" rel="stylesheet">
   <link href="<?php echo SDEL; ?>/css/style.css<?php file_ver(SDEL . '/css/style.css') ?>" rel="stylesheet">
   <link href="<?php echo SDEL; ?>/css/responsive.css<?php file_ver(SDEL . '/css/responsive.css') ?>" rel="stylesheet">
-  <?php echo apply_filters('thk_head', '');  // load header; 
-  ?>
-  <!-- <?php wp_head(); ?> -->
+  <!-- load header -->
+  <?php echo apply_filters('thk_head', ''); ?>
 </head>
 
 <?php if( is_404() ): ?>
@@ -53,7 +52,7 @@ $template = get_post_meta(get_the_ID(), '_wp_page_template', true);
 <?php endif;?>
   <!-- Wrapper -->
   <div id="wrapper">
-    <!--HEADER-->
+    <!-- HEADER -->
     <header id="header" class="header-logo-center header-sticky-resposnive">
       <div id="header-wrap">
         <div class="container">

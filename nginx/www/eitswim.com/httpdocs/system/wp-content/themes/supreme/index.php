@@ -164,6 +164,7 @@ $news_count = get_option( 'elc_news_page_news_count', 10 );
 
         </div>
       </div>
+    </div>
   </section><!-- end: Content -->
 
 <?php
