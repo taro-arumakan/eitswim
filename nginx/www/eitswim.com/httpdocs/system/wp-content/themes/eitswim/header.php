@@ -1,5 +1,4 @@
 <?php
-echo "<script>console.log('eitswim header.php');</script>";
 /**
  * The header for our theme
  *
