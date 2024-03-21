@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The header for our theme
  *
@@ -44,144 +45,151 @@ $template = get_post_meta(get_the_ID(), '_wp_page_template', true);
   <?php echo apply_filters('thk_head', ''); ?>
 </head>
 
-<?php if( is_404() ): ?>
-<body>
-<?php else:?>
-<body <?php echo site_name_type();?>>
-<?php endif;?>
-  <!-- Wrapper -->
-  <div id="wrapper">
-    <!-- HEADER -->
-    <header id="header" class="header-logo-center header-sticky-resposnive">
-      <div id="header-wrap">
-        <div class="container">
-          <!--Logo-->
-          <div id="logo">
-            <a itemprop="url" href="/" class="logo" data-dark-logo="<?php echo SDEL; ?>/images/logo-dark.png<?php file_ver(SDEL . '/images/logo-dark.png') ?>"> <img itemprop="logo" src="<?php echo SDEL; ?>/images/logo.png<?php file_ver(SDEL . '/images/logo.png') ?>" alt="eit swim Logo"> </a>
-          </div><!--End: Logo-->
+<?php if (is_404()) : ?>
 
-          <!--Navigation Resposnive Trigger-->
-          <div id="mainMenu-trigger">
-            <button class="lines-button x"> <span class="lines"></span> </button>
-          </div><!--end: Navigation Resposnive Trigger-->
+  <body>
+  <?php else : ?>
 
-          <!--Navigation-->
-          <div id="mainMenu" class="menu-hover-background light">
-            <div class="container">
-              <nav>
-                <!--Left menu-->
-                <?php
-                $menu_name = 'left-nav';
-                if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
-                  $left_menu_list = '';
-                  $menu = wp_get_nav_menu_object($locations[$menu_name]);
-                  $menu_items = wp_get_nav_menu_items($menu->term_id);
-                  //階層化の配列に変換する必要あり
-                  $menus = convert_nav_menu_array($menu_items);
-                  echo <<<EOF
-<ul>
-EOF;
-                  foreach ($menus as $item) {
-                    if (count($item) > 1) {
-                      echo <<<EOF
-  <li class="dropdown">
-EOF;
-                      $index = 0;
-                      foreach ($item as $item2) {
-                        $index += 1;
-                        if ($index == 1) {
-                          echo <<<EOF
-  <a href="{$item2->url}">{$item2->title}</a>
-    <ul class="dropdown-menu">
-EOF;
-                        } else {
-                          $last = '';
-                          if ($index == count($item)) {
-                            $last = ' class="last-child"';
-                          }
-                          echo <<<EOF
-  <li{$last}><a href="{$item2->url}">{$item2->title}</a></li>
-EOF;
-                        }
-                      }
-                      echo <<<EOF
-    </ul>
-  </li>
-EOF;
-                    } else {
-                      foreach ($item as $item3) {
-                        echo <<<EOF
-  <li><a href="{$item3->url}">{$item3->title}</a></li>
-EOF;
-                      }
-                    }
-                  }
-                  echo <<<EOF
-</ul>
-EOF;
-                }
-                ?>
-                <!--Right Menu-->
-                <?php
-                $menu_name = 'right-nav';
-                if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
-                  $left_menu_list = '';
-                  $menu = wp_get_nav_menu_object($locations[$menu_name]);
-                  $menu_items = wp_get_nav_menu_items($menu->term_id);
-                  //階層化の配列に変換する必要あり
-                  $menus = convert_nav_menu_array($menu_items);
-                  echo <<<EOF
-<ul>
-EOF;
-                  foreach ($menus as $item) {
-                    if (count($item) > 1) {
-                      echo <<<EOF
-  <li class="dropdown">
-EOF;
-                      $index = 0;
-                      foreach ($item as $item2) {
-                        $index += 1;
-                        if ($index == 1) {
-                          echo <<<EOF
-  <a href="{$item2->url}">{$item2->title}</a>
-    <ul class="dropdown-menu">
-EOF;
-                        } else {
-                          $last = '';
-                          if ($index == count($item)) {
-                            $last = ' class="last-child"';
-                          }
-                          echo <<<EOF
-  <li{$last}><a href="{$item2->url}">{$item2->title}</a></li>
-EOF;
-                        }
-                      }
-                      echo <<<EOF
-    </ul>
-  </li>
-EOF;
-                    } else {
-                      foreach ($item as $item3) {
-                        echo <<<EOF
-  <li><a href="{$item3->url}">{$item3->title}</a></li>
-EOF;
-                      }
-                    }
-                  }
-                  echo <<<EOF
-</ul>
-EOF;
-                }
-                ?>
-              </nav>
-            </div>
-          </div><!--end: Navigation-->
-
-        </div>
-      </div>
-    </header><!--END: HEADER-->
-
-    <?php if (is_front_page() && is_home()) : ?>
-    <?php elseif (is_404()) : ?>
-    <?php else : ?>
+    <body <?php echo site_name_type(); ?>>
     <?php endif; ?>
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- HEADER -->
+      <header id="header" class="header-logo-center header-sticky-resposnive">
+        <div id="header-wrap">
+          <div class="container">
+            <!--Logo-->
+            <div id="logo">
+              <a itemprop="url" href="/" class="logo" data-dark-logo="<?php echo SDEL; ?>/images/logo-dark.png<?php file_ver(SDEL . '/images/logo-dark.png') ?>"> <img itemprop="logo" src="<?php echo SDEL; ?>/images/logo.png<?php file_ver(SDEL . '/images/logo.png') ?>" alt="eit swim Logo"> </a>
+            </div><!--End: Logo-->
+
+            <!--Navigation Resposnive Trigger-->
+            <div id="mainMenu-trigger">
+              <button class="lines-button x"> <span class="lines"></span> </button>
+            </div><!--end: Navigation Resposnive Trigger-->
+
+            <!--shop icon on mobile -->
+            <div id="shop-icon">
+              <a itemprop="url" href="https://shop.eitswim.com" target="_blank" class="shop" data-dark-logo="<?php echo SDEL; ?>/images/shop.png<?php file_ver(SDEL . '/images/shop.png') ?>"> <img itemprop="logo" src="<?php echo SDEL; ?>/images/shop.png<?php file_ver(SDEL . '/images/shop.png') ?>" alt="eitswim shop"></a>
+            </div>
+
+            <!--Navigation-->
+            <div id="mainMenu" class="menu-hover-background light">
+              <div class="container">
+                <nav>
+                  <!--Left menu-->
+                  <?php
+                  $menu_name = 'left-nav';
+                  if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
+                    $left_menu_list = '';
+                    $menu = wp_get_nav_menu_object($locations[$menu_name]);
+                    $menu_items = wp_get_nav_menu_items($menu->term_id);
+                    //階層化の配列に変換する必要あり
+                    $menus = convert_nav_menu_array($menu_items);
+                    echo <<<EOF
+<ul>
+EOF;
+                    foreach ($menus as $item) {
+                      if (count($item) > 1) {
+                        echo <<<EOF
+  <li class="dropdown">
+EOF;
+                        $index = 0;
+                        foreach ($item as $item2) {
+                          $index += 1;
+                          if ($index == 1) {
+                            echo <<<EOF
+  <a href="{$item2->url}">{$item2->title}</a>
+    <ul class="dropdown-menu">
+EOF;
+                          } else {
+                            $last = '';
+                            if ($index == count($item)) {
+                              $last = ' class="last-child"';
+                            }
+                            echo <<<EOF
+  <li{$last}><a href="{$item2->url}">{$item2->title}</a></li>
+EOF;
+                          }
+                        }
+                        echo <<<EOF
+    </ul>
+  </li>
+EOF;
+                      } else {
+                        foreach ($item as $item3) {
+                          echo <<<EOF
+  <li><a href="{$item3->url}">{$item3->title}</a></li>
+EOF;
+                        }
+                      }
+                    }
+                    echo <<<EOF
+</ul>
+EOF;
+                  }
+                  ?>
+                  <!--Right Menu-->
+                  <?php
+                  $menu_name = 'right-nav';
+                  if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
+                    $left_menu_list = '';
+                    $menu = wp_get_nav_menu_object($locations[$menu_name]);
+                    $menu_items = wp_get_nav_menu_items($menu->term_id);
+                    //階層化の配列に変換する必要あり
+                    $menus = convert_nav_menu_array($menu_items);
+                    echo <<<EOF
+<ul>
+EOF;
+                    foreach ($menus as $item) {
+                      if (count($item) > 1) {
+                        echo <<<EOF
+  <li class="dropdown">
+EOF;
+                        $index = 0;
+                        foreach ($item as $item2) {
+                          $index += 1;
+                          if ($index == 1) {
+                            echo <<<EOF
+  <a href="{$item2->url}">{$item2->title}</a>
+    <ul class="dropdown-menu">
+EOF;
+                          } else {
+                            $last = '';
+                            if ($index == count($item)) {
+                              $last = ' class="last-child"';
+                            }
+                            echo <<<EOF
+  <li{$last}><a href="{$item2->url}">{$item2->title}</a></li>
+EOF;
+                          }
+                        }
+                        echo <<<EOF
+    </ul>
+  </li>
+EOF;
+                      } else {
+                        foreach ($item as $item3) {
+                          echo <<<EOF
+  <li><a href="{$item3->url}">{$item3->title}</a></li>
+EOF;
+                        }
+                      }
+                    }
+                    echo <<<EOF
+</ul>
+EOF;
+                  }
+                  ?>
+                </nav>
+              </div>
+            </div><!--end: Navigation-->
+
+          </div>
+        </div>
+      </header><!--END: HEADER-->
+
+      <?php if (is_front_page() && is_home()) : ?>
+      <?php elseif (is_404()) : ?>
+      <?php else : ?>
+      <?php endif; ?>

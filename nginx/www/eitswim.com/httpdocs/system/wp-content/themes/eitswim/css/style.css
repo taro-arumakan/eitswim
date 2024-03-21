@@ -1198,6 +1198,13 @@ border-top: 1px solid $light;
       #header #mainMenu-trigger button i {
         font-size: 17px; }
 
+#header #shop-icon {
+  /* show on mobile only */
+  display: none;
+}
+#shop-icon img {
+  height: 1.5rem;
+}
 /* ----------------------------------------------------------------
 Main Menu
 -----------------------------------------------------------------*/
@@ -2546,6 +2553,13 @@ HEADER: Responsive
     width: 20%;
     opacity: 1;
     visibility: visible; }
+  #header #shop-icon {
+    position: absolute;
+    top: -4px;
+    right: 2rem;
+    display: block;
+    z-index: 1;
+  }
   #header #mainMenu:not(.menu-overlay) {
     max-height: 0;
     clear: both;
